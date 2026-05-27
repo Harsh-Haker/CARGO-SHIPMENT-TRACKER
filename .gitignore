@@ -1,0 +1,7 @@
+# Ignore compiled Java classes
+*.class
+
+# Ignore OS temporary files
+Thumbs.db
+Desktop.ini
+.DS_Store

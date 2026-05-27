@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!-- ===================================================== -->
+    <!--  Cargo Shipment Tracker - Deployment Descriptor        -->
+    <!--  web.xml  (WEB-INF/web.xml)                           -->
+    <!--  Compatible with Servlet 4.0 / Tomcat 9+              -->
+    <!-- ===================================================== -->
+
+    <display-name>Cargo Shipment Tracker</display-name>
+    <description>
+        A logistics shipment tracking portal demonstrating Servlets,
+        JSP, Sessions, Cookies, JDBC, MySQL, and MVC Architecture.
+    </description>
+
+    <!-- ============================================================ -->
+    <!--  SERVLET DECLARATION                                         -->
+    <!-- ============================================================ -->
+    <servlet>
+        <servlet-name>TrackShipmentServlet</servlet-name>
+        <servlet-class>controller.TrackShipmentServlet</servlet-class>
+        <!-- Load on startup ensures early initialization & error detection -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- ============================================================ -->
+    <!--  SERVLET URL MAPPING                                         -->
+    <!-- ============================================================ -->
+    <servlet-mapping>
+        <servlet-name>TrackShipmentServlet</servlet-name>
+        <url-pattern>/trackShipment</url-pattern>
+    </servlet-mapping>
+
+    <!-- ============================================================ -->
+    <!--  WELCOME FILES                                               -->
+    <!-- ============================================================ -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- ============================================================ -->
+    <!--  SESSION CONFIGURATION                                       -->
+    <!--  Session timeout: 30 minutes of inactivity                  -->
+    <!-- ============================================================ -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- ============================================================ -->
+    <!--  ERROR PAGES                                                 -->
+    <!--  Map common HTTP errors and Java exceptions to error.jsp     -->
+    <!-- ============================================================ -->
+
+    <!-- 404 Not Found -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+
+    <!-- 500 Internal Server Error -->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+
+    <!-- Generic Java exceptions -->
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error.jsp</location>
+    </error-page>
+
+    <!-- SQL exceptions -->
+    <error-page>
+        <exception-type>java.sql.SQLException</exception-type>
+        <location>/error.jsp</location>
+    </error-page>
+
+</web-app>
